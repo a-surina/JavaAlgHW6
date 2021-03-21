@@ -1,5 +1,6 @@
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
@@ -85,17 +86,33 @@ public class Main {
         System.out.println("\tTime elapsed: " + String.valueOf(elapsedNanosDelete) + " milliseconds\n");
 
         moneyTree.showTree();
+        System.out.println();
         
         //Задание 6.6: алгоритм пирамидальной сортировки с реализацией бинарной пирамиды, время
         int[] arrayToSort;
         arrayToSort = new int[1000];
-
         Random rand = new Random();
         for (int i = 0; i<1000; i++) {
             arrayToSort[i] = rand.nextInt(1000);
         }
-        //Задание 6.7: пример сбалансированного дерева и его применения
+        System.out.println("New array created:");
+        System.out.println(Arrays.toString(arrayToSort));
 
+        MyHeap heap = new MyHeap();
+        long startTimeHeapSort = System.nanoTime();
+        heap.heapSort(arrayToSort);
+        double elapsedNanosHeapSort  = (double) (System.nanoTime() - startTimeHeapSort)/1000000;
+        System.out.println("Array sorted by heap sort: ");
+        System.out.println(Arrays.toString(arrayToSort));
+        System.out.println("\tTime elapsed: " + String.valueOf(elapsedNanosHeapSort) + " milliseconds\n");
+
+
+
+        //Задание 6.7: пример сбалансированного дерева и его применения
+        System.out.println("Пример сбалансированного дерева:\n" +
+                "\t- Красно-чёрное дерево;\n" +
+                "\t- АВЛ-дерево;\n" +
+                "\t- TreeMap в Java реализован на основе красно-чёрных деревьев.\n");
 
 
            }
